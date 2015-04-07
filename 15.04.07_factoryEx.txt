@@ -41,7 +41,7 @@ public class PersonFactory {
 		}else if(PersonName.equals("yeonwoo")){
 			return new Yeonwoo();
 		}else{
-			System.out.println("null은안되");
+			System.out.println("교육받는인원중하나만");
 			return null;
 			
 		}
