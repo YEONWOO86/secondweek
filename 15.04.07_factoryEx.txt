@@ -1,6 +1,6 @@
 package Factory.test;
 
-public interface Person { //ÀÎÅÍÆäÀÌ½º »ı¼º
+public interface Person { //ì¸í„°í˜ì´ìŠ¤ ìƒì„±
 	public void printPerson();
 
 }
@@ -29,7 +29,7 @@ package Factory.test;
 public class PersonFactory {
 	public static Person create(String PersonName){
 		if(PersonName == null){
-			throw new IllegalArgumentException("nullÀº¾ÈµÊ");
+			throw new IllegalArgumentException("nullì€ì•ˆë¨");
 		}
 		
 		if(PersonName.equals("jihun")){
@@ -41,7 +41,9 @@ public class PersonFactory {
 		}else if(PersonName.equals("yeonwoo")){
 			return new Yeonwoo();
 		}else{
+			System.out.println("nullì€ì•ˆë˜");
 			return null;
+			
 		}
 		
 	}
@@ -57,7 +59,7 @@ public class Yeonwoo implements Person {
 
 	@Override
 	public void printPerson() {
-		System.out.println("¹Ú¿¬¿ì " );
+		System.out.println("ë°•ì—°ìš° " );
 	}
 	
  
@@ -70,7 +72,7 @@ public class Yungseok implements Person {
 	@Override
 	public void printPerson() {
 		
-		System.out.println("À±¿µ¼®");
+		System.out.println("ìœ¤ì˜ì„");
 	}
 
 	
@@ -82,7 +84,7 @@ public class Leehyoun implements Person {
 	@Override
 	public void printPerson() {
 		
-		System.out.println("ÀÌÇö" );
+		System.out.println("ì´í˜„" );
 	}
 
 }
@@ -93,7 +95,7 @@ public class Jihun implements Person {
 	@Override
 	public void printPerson() {
 		
-		System.out.println("ÀÌÁöÈÆ " );
+		System.out.println("ì´ì§€í›ˆ " );
 	}
 
 }
