@@ -1,0 +1,102 @@
+package Factory.test;
+
+public interface Person { //인터페이스 생성
+	public void printPerson();
+
+}
+
+-----------------------------------------------------------
+
+package Factory.test;
+
+public class FactoryTest {
+	public static void main(String[] args) {
+		Person p1 =PersonFactory.create("jihun");
+		p1.printPerson();
+		Person p2 =PersonFactory.create("leehyoun");
+		Person p3 =PersonFactory.create("yeonwoo");
+		Person p4 =PersonFactory.create("yungseok");
+		
+		p2.printPerson();
+		p3.printPerson();
+		p4.printPerson();
+	}
+}
+
+-----------------------------------------------------------
+package Factory.test;
+
+public class PersonFactory {
+	public static Person create(String PersonName){
+		if(PersonName == null){
+			throw new IllegalArgumentException("null은안됨");
+		}
+		
+		if(PersonName.equals("jihun")){
+			return new Jihun();
+		}else if(PersonName.equals("leehyoun")){
+			return new Leehyoun();
+		}else if(PersonName.equals("yungseok")){
+			return new Yungseok();
+		}else if(PersonName.equals("yeonwoo")){
+			return new Yeonwoo();
+		}else{
+			return null;
+		}
+		
+	}
+
+	
+}
+
+-----------------------------------------------------------
+
+package Factory.test;
+
+public class Yeonwoo implements Person {
+
+	@Override
+	public void printPerson() {
+		System.out.println("박연우 " );
+	}
+	
+ 
+}
+
+package Factory.test;
+
+public class Yungseok implements Person {
+	
+	@Override
+	public void printPerson() {
+		
+		System.out.println("윤영석");
+	}
+
+	
+}
+package Factory.test;
+
+public class Leehyoun implements Person {
+
+	@Override
+	public void printPerson() {
+		
+		System.out.println("이현" );
+	}
+
+}
+package Factory.test;
+
+public class Jihun implements Person {
+
+	@Override
+	public void printPerson() {
+		
+		System.out.println("이지훈 " );
+	}
+
+}
+
+
+
