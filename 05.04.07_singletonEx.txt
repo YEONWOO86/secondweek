@@ -1,0 +1,59 @@
+package singleton.test;
+
+public class Main {
+	public static void main(String[] args) {
+		System.out.println("start");
+		Singleton s1 =Singleton.getInstance();
+		Singleton s2 =Singleton.getInstance();
+		
+		if(s1 == s2){
+			System.out.println("s1,s2는 같은인스턴스");
+			
+		}else{
+			System.out.println("s1,s2는 다른인스턴스");
+		}
+		System.out.println("end");
+	}
+}
+
+--------------------------------------------------------------------
+
+package singleton.test;
+
+public class Singleton { //일반적패턴(쓰레드환경에서는문제점이발생)
+	private static Singleton singleton = new Singleton();
+	
+	private Singleton(){
+		System.out.println("인스턴스 생성했습니다.");
+	}
+	
+	public static Singleton getInstance(){
+		return singleton;
+	}
+}
+
+/*
+	public class Singleton{ //동기화
+		private volatile static Singleton uniqueInstance;
+		private Singleton(){}
+		
+		public static Singleton getInstance(){
+			if(uniqueInstance == null){
+				synchronized (Singleton.class) {
+					if(uniqueInstance == null){
+						uniqueInstance = new Singleton();
+					}
+					
+				}
+			}
+			return uniqueInstance;
+		}
+  
+	} 
+ */
+//	DCL(Double-Checking Locking)을 써서 
+//	getInstance()에서 동기화되는 부분을 줄입니다.
+//	DCL(Double-Checking Locking)을 사용하면, 
+//	일단 인스턴스가 생성되어 있는지 확인한 다음, 
+//	생성되어있지 않았을 때만 동기화를 할 수 있습니다. 
+//	이렇게 하면 처음에만 동기화를 하고 나중에는 동기화를 하지 않아도 됩니다.
